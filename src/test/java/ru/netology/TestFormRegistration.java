@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-//import static com.codeborne.selenide.Condition.exactText;
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -20,13 +20,14 @@ import static com.codeborne.selenide.Selenide.open;
 class TestFormRegistration {
 
     @BeforeEach
-    static void setUpAll() {
+    void setUp() {
         Configuration.browser = "chrome";
     }
 
     @Test
-    void shouldOrderFormRegistration() {
+    private void shouldOrderFormRegistration() {
         open("http://localhost:9999");
+
         $("[data-test-id=city]").setValue("Екатеринбург");
 
         LocalDate today = LocalDate.now();
@@ -37,7 +38,7 @@ class TestFormRegistration {
 
         $("[data-test-id=name]").setValue("Петров Василий");
 
-        $("[data-test-id=phone]").setValue("+7999000000");
+        $("[data-test-id=phone]").setValue("+79990000000");
 
         $(".checkbox__control").click();
 
